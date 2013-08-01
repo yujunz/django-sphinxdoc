@@ -9,8 +9,7 @@ from sphinxdoc.models import Document
 
 
 class DocumentIndex(indexes.SearchIndex, indexes.Indexable):
-    """
-    Index for :class:`~sphinxdoc.models.Document`.
+    """Index for :class:`~sphinxdoc.models.Document`.
 
     """
     text = indexes.CharField(document=True, use_template=True)
@@ -19,7 +18,3 @@ class DocumentIndex(indexes.SearchIndex, indexes.Indexable):
 
     def get_model(self):
         return Document
-
-    def index_queryset(self, using=None):
-        """Used when the entire index for model is updated."""
-        return self.get_model().objects.all()
