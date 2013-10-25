@@ -1,0 +1,19 @@
+.. _autobuild:
+
+Auto-build JSON files on ``hg pull/push``
+=========================================
+
+If you use `Mercurial (hg) <http://selenic.com/mercurial/>`_, you can update
+your documentation automatically each time you push to your web server (or if
+you pull from another server to your web server).
+
+To do that, open your repository’s ``.hg/hgrc`` in your favorite editor and add
+the following lines to it:
+
+.. sourcecode:: cfg
+
+    [hooks]
+    changegroup = /path/to/your/python path/to/manage.py updatedoc -b <project>
+    
+Now, each time the repository is modified via a pull or push command, the
+documentation on your Django site will be updated automatically.
