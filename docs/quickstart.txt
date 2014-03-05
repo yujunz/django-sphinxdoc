@@ -1,0 +1,108 @@
+.. _quickstart:
+
+Quickstart Guide
+================
+
+This guide assumes that you already have a `Django
+<http://www.djangoproject.com/>`_ installation up and running. If this is not
+the case, you should work through the `Django tutorial
+<http://docs.djangoproject.com/en/dev/intro/install/#intro-install>`_ first.
+
+You also need `Haystack <http://haystacksearch.org>`_ for searching within the
+documentation.
+
+
+Installation
+------------
+
+Just use `PIP <http://pypi.python.org/pypi/pip>`_:
+
+.. sourcecode:: bash
+
+    $ pip install django-sphinxdoc
+
+If you want the lates development version, isntall it from Bitbucket:
+
+.. sourcecode:: bash
+
+    $ pip install https://ssc@bitbucket.org/ssc/django-sphinxdoc
+    $ # or
+    $ hg clone ssh://hg@bitbucket.org/ssc/django-sphinxdoc
+    $ pip install -e django-sphinxdoc
+
+
+Setup
+-----
+
+Add ``'sphinxdoc'`` to your ``INSTALLED_APPS`` in your ``settings.py`` and add
+the following line to your project's ``urls.py``:
+
+.. sourcecode:: python
+
+    (r'^docs/', include('sphinxdoc.urls')),
+
+Install the required database tables with:
+
+.. sourcecode:: bash
+
+    $ python manage.py syncdb
+
+In order get Haystack working with django-sphinxdoc, you only need to executes
+the steps under `Configuration
+<http://docs.haystacksearch.org/dev/tutorial.html#configuration>`_ in the
+Haystack tutorial (if not already done). You don’t need to create any search
+indexes, views or templates yourself.
+
+
+Optional Settings
+^^^^^^^^^^^^^^^^^
+
+Optional sphinxdoc settings in your ``settings.py``.
+
+``SPHINXDOC_CACHE_MINUTES``:
+    Sets the length of the cache duration for sphinxdoc
+    pages in minutes. If not set, defaults to 5 minutes. For caching to be
+    active, you must enable Django's
+    `cache framework <https://docs.djangoproject.com/en/dev/topics/cache/>`_
+
+``SPHINXDOC_BUILD_DIR``:
+    Sets the name of target directory (within the project root) for the
+    sphinx builder and the sphinxdoc updater. If not set, defaults to
+    *_build*.
+
+
+Add a project
+-------------
+
+Django-sphinxdoc adds the application *Sphinxdoc* with the *Project* and
+*Document* models to your admin panel. Create a new project and fill out these
+fields:
+
+Name:
+    The name of the documented project
+
+Slug:
+    A sluggified version of the project name; will be generated
+    automatically
+
+Path:
+    A file system path to the Sphinx project (where Sphinx’ ``conf.py`` is
+    located), e.g.: ``/path/to/project/docs``
+
+
+Build & import the documentation
+--------------------------------
+
+You need to build JSON files from your documentation and import their content
+into your site’s database. Django-sphinxdoc provides an management command to
+help you with that:
+
+.. sourcecode:: bash
+
+    $ python manage.py updatedoc -b <project-slug>
+
+
+That’s it!
+----------
+
+You can now find the application’s documentation under */docs/<slug>/*.
