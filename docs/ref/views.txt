@@ -1,0 +1,18 @@
+.. _ref-views:
+
+Views
+=====
+
+.. automodule:: sphinxdoc.views
+
+    .. autofunction:: documentation(request, slug, path)
+
+    .. autofunction:: objects_inventory(request, slug)
+
+    .. autofunction:: sphinx_serve(request, slug, type_, path)
+
+    .. autoclass:: ProjectSearchView
+        :members:
+
+    .. autoclass:: OverviewList
+        :members:

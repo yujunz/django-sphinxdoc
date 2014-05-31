@@ -1,0 +1,22 @@
+============================================
+Welcome to django-sphinxdoc's documentation!
+============================================
+
+Contents:
+
+.. toctree::
+    :maxdepth: 2
+
+    quickstart
+    autobuild
+    change_appearance
+    ref/index
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
