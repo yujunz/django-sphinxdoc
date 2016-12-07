@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-sphinxdoc',
-    version='1.4.2',
+    version='1.5.0',
     author='Stefan Scherfke',
     author_email='stefan at sofa-rockers.org',
     description='Easily integrate Sphinx documentation into your website.',
@@ -32,6 +32,8 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Utilities',
     ]
